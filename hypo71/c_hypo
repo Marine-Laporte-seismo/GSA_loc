@@ -1,0 +1,17 @@
+#!/bin/bash
+name=$1
+cat ./hypo71/hypodata $1 > ./hypo71/hypoentree
+case $name in
+	*.dat)  name=`basename $name .dat`;;
+	*.data) name=`basename $name .data`;;
+	*.inp)  name=`basename $name .inp`;;
+        *.tri)  name=`basename $name .tri`;;
+esac
+echo ./hypo71/hypoentree > ./hypo71/input
+echo $name.prt >> ./hypo71/input
+echo $name.pun >> ./hypo71/input
+echo $name.hyp >> ./hypo71/input
+echo $name.mec >> ./hypo71/input
+echo $name.vis >> ./hypo71/input
+
+./hypo71/hypo < ./hypo71/input 

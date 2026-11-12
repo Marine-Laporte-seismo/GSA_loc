@@ -1,0 +1,47 @@
+# NONLINLOC Control File
+# Compute theorical travel times
+# _init_sobol.py - DEC2021
+CONTROL -1 54321
+TRANS  SIMPLE 0	0 0
+# Vel2Grid
+#----------
+VGOUT  ./nlloc/theoretical/model/layer
+VGTYPE P
+#VGTYPE S
+VGGRID  2 202 106 0.0 0.0 -5.0 0.5 0.5 0.5  SLOW_LEN
+#Velocity model / lines : 13 a 15
+# LAYER DEPTH	VP	RHOP	VS   RHOS   
+LAYER    0.0     5.60    0    3.20    0    2.67    0
+LAYER    23.0    6.50    0    3.71    0    2.67    0
+LAYER    55.0    8.10    0    4.63    0    2.67    0
+# Grid2Time
+#------------
+GTFILES  ./nlloc/theoretical/model/layer  ./nlloc/theoretical/time/layer P
+#GTFILES  ./nlloc/theoretical/model/layer  ./nlloc/theoretical/time/layer S
+GTMODE GRID2D ANGLES_NO
+# Stations / lines 27 a 53
+# GTSRCE  STA   XYZ   27.25  -67.78  0.0  1.242
+GTSRCE  STA   XYZ   27.25  -67.78  0.0  1.242
+GTSRCE  STA   XYZ   27.25  -67.78  0.0  1.242
+GTSRCE  STA   XYZ   27.25  -67.78  0.0  1.242
+GTSRCE  STA   XYZ   27.25  -67.78  0.0  1.242
+GTSRCE  STA   XYZ   27.25  -67.78  0.0  1.242
+GTSRCE  STA   XYZ   27.25  -67.78  0.0  1.242
+GTSRCE  STA   XYZ   27.25  -67.78  0.0  1.242
+
+GT_PLFD  1.0e-7  0
+
+# Time2EQ
+#------------
+EQFILES ./nlloc/theoretical/time/layer ./nlloc/synth.obs
+EQMODE SRCE_TO_STA
+# Location of synthetic event ligne 62
+EQEVENT  EQ0   0.0 0.0 25.0  0.0
+
+#Stations to compute lignes 66 a 116
+EQSTA  KKN  P  GAU 0.05   GAU 0.05
+EQSTA  KKN  S  GAU 0.15   GAU 0.05
+
+# Ratio aranged line 118
+EQVPVS  1.73
+EQQUAL2ERR 0.05 0.1 0.5 1.0 99999.9

@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+venv/
+.venv/
+
+# Résultats des simulations : on garde seulement l'exemple
+out/*
+!out/SOBOL_H71_Z_25km_N10_30720_Vars_14/
+
+# Fichiers de paramètres réécrits à chaque exécution
+nlloc/control_tt.txt
+nlloc/control_reloc.txt
+hypo71/hypodata
+
+# Exécutable Hypo71 (à installer séparément)
+hypo71/hypo
+
+# Fichiers d'entrée générés à chaque exécution
+input_phase.pha
+hypo71/hypoentree
+hypo71/input
+
+# Sorties de NonLinLoc
+nlloc/simu/
+nlloc/theoretical/
+nlloc/synth.obs*
+
+# Sorties de Hypo71
+*.hyp
+*.mec
+*.prt
+*.pun
+*.vis
+*_log.txt
+hypo71/Simu.out
+
+
+# Éditeurs et système
+.vscode/
+.DS_Store
